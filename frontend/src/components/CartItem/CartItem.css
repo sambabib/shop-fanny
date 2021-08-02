@@ -1,0 +1,161 @@
+.cartitem {
+  width: 100%;
+  padding: 1rem 0;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 1.4rem;
+  font-family: var(--logo-font);
+}
+
+.cartitem__image {
+  width: 250px;
+}
+
+.cartitem__image > img {
+  width: 260px;
+  height: 400px;
+}
+
+.cartitem__name {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.cartitem__price {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.cartitem__select {
+  margin-bottom: 1rem;
+  padding: 2px;
+  font-size: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.cartitem__deleteBtn {
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
+.cartitem__info {
+  width: 220px;
+}
+
+@media (max-width: 1240px) {
+  .cartitem {
+    width: 100%;
+  }
+
+  .cartitem__image {
+    width: 200px;
+  }
+
+  .cartitem__image > img {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1115px) {
+  .cartitem__name {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .cartitem__price {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .cartitem__select {
+    padding: 2px;
+    font-size: 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cartitem__deleteBtn {
+    font-size: 0.6rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cartitem__name {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .cartitem__price {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .cartitem__select {
+    padding: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cartitem__deleteBtn {
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 950px) {
+  .cartitem__name {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .cartitem__price {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .cartitem__select {
+    padding: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cartitem__deleteBtn {
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 630px) {
+  .cartitem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .cartitem__image {
+    width: 170px;
+  }
+
+  .cartitem__image > img {
+    width: 170px;
+    height: 280px;
+  }
+
+  .cartitem__info {
+    width: 150px;
+  }
+}
