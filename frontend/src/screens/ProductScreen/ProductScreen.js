@@ -1,7 +1,29 @@
-import './ProductScreen.css';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import ProductSize from '../../components/ProductSize/ProductSize';
+import './ProductScreen.css';
 
-const ProductScreen = () => {
+// @actions
+import { getProductDetails } from '../../redux/actions/productActions';
+import { addToCart } from '../../redux/actions/cartActions';
+
+const ProductScreen = (match, history) => {
+  const [qty, setQty] = useState(1);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const productDetails = useSelector((state) => state.getProductDetails);
+  const { error, loading, product } = productDetails;
+
+  useEffect(() => {
+    if (product && id !== product._id) {
+      dispatch(getProductDetails(id));
+
+      console.log(id);
+    }
+  }, [product, id, dispatch]);
+
   return (
     <div className='productscreen'>
       <div className='productscreen__left'>

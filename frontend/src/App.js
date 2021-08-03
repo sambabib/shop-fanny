@@ -9,7 +9,6 @@ import CartScreen from './screens/CartScreen/CartScreen';
 
 // @components
 import Navbar from './components/Navbar/Navbar';
-// import BackDrop from './components/BackDrop/BackDrop';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
   return (
     <Router>
       <Navbar handleSideToggle={handleSideToggle} />
-      {/* <BackDrop /> */}
       <SideDrawer
         sideDrawerToggle={sideDrawerToggle}
         close={() => setSideDrawerToggle(false)}

@@ -13,19 +13,29 @@ const HomeScreen = () => {
   const { products, loading, error } = getProducts;
 
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts());
+  }, [dispatch]);
 
   return (
     <div className='homescreen'>
       <h2 className='homescreen__title'>Latest Products</h2>
 
       <div className='homescreen__products'>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {loading ? (
+          <h2>Loading...</h2>
+        ) : error ? (
+          <h2>{error}</h2>
+        ) : (
+          products.map((product) => (
+            <Product
+              key={product._id}
+              productId={product._id}
+              name={product.name}
+              price={product.price}
+              imageUrl={product.imageUrl}
+            />
+          ))
+        )}
       </div>
     </div>
   );
