@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './CartItem.css';
 
-const CartItem = ({ cartItem, handleQtyChange }) => {
+const CartItem = ({ cartItem, handleQtyChange, handleRemoveFromCart }) => {
   return (
     <div className='cartitem'>
       <div className='cartitem__image'>
@@ -28,7 +28,10 @@ const CartItem = ({ cartItem, handleQtyChange }) => {
         </select>
 
         <div className='cartitem__deleteBtn'>
-          <i className='fas fa-trash'></i>
+          <i
+            className='fas fa-trash'
+            onClick={() => handleRemoveFromCart(cartItem.product)}
+          ></i>
         </div>
       </div>
     </div>

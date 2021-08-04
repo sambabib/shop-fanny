@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import './CartScreen.css';
 import CartItem from '../../components/CartItem/CartItem';
 
 // @actions
-import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -16,16 +16,44 @@ const CartScreen = () => {
     dispatch(addToCart(qty, id));
   };
 
+  useEffect(() => {
+    dispatch(removeFromCart());
+  }, [dispatch]);
+
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, cartItem) => Number(cartItem.qty) + qty, 0);
+  };
+
+  const getCartSubTotal = () => {
+    return cartItems.reduce(
+      (price, cartItem) => cartItem.price * cartItem.qty + price,
+      0
+    );
+  };
+
   return (
     <div className='cartscreen'>
       <h2>Shopping Cart</h2>
       <p className='cartscreen__number'>
-        <span>0</span> items
+        <span>{getCartCount()}</span> items
       </p>
       <div className='cartscreen__main'>
-        {cartItems.map((cartItem) => (
-          <CartItem cartItem={cartItem} handleQtyChange={handleQtyChange} />
-        ))}
+        {cartItems.length === 0 ? (
+          <h2>Cart is Empty</h2>
+        ) : (
+          cartItems.map((cartItem) => (
+            <CartItem
+              key={cartItem.product}
+              cartItem={cartItem}
+              handleQtyChange={handleQtyChange}
+              handleRemoveFromCart={handleRemoveFromCart}
+            />
+          ))
+        )}
       </div>
 
       <div className='cartscreen__footer'>
@@ -35,8 +63,8 @@ const CartScreen = () => {
         </div>
 
         <div className='cartscreen__info'>
-          <p>Subtotal (0)</p>
-          <p>$499.99</p>
+          <p>Subtotal ({getCartCount()})</p>
+          <p>${getCartSubTotal().toFixed(2)}</p>
         </div>
 
         <div className='cartscreen-footer__button'>
