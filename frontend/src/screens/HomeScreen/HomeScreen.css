@@ -52,6 +52,10 @@
   .homescreen__products {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .homescreen__products h2 {
+    margin-left: 2rem;
+  }
 }
 
 @media (max-width: 490px) {
@@ -62,6 +66,10 @@
   .homescreen__products {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .homescreen__products h2 {
+    margin-left: 2rem;
+  }
 }
 
 @media (max-width: 340px) {
@@ -71,5 +79,9 @@
 
   .homescreen__products {
     grid-template-columns: 1fr;
+  }
+
+  .homescreen__products h2 {
+    margin-left: 2rem;
   }
 }

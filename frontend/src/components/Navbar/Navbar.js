@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './Navbar.css';
 
 const Navabar = ({ handleSideToggle }) => {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, cartItem) => qty + Number(cartItem.qty), 0);
+  };
+
   return (
     <nav className='navbar'>
       <div className='navbar__logo'>
@@ -13,7 +21,7 @@ const Navabar = ({ handleSideToggle }) => {
           <li>
             <Link to='/cart' className='cart__link'>
               <span>
-                Cart <span className='cartlogo__badge'>(0)</span>
+                Cart <span className='cartlogo__badge'>({getCartCount()})</span>
               </span>
             </Link>
           </li>
