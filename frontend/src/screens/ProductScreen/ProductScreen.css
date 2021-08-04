@@ -6,6 +6,13 @@
   justify-content: space-between;
 }
 
+.productscreen > h2 {
+  margin-left: 8px;
+  font-family: var(--logo-font);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
 .productscreen__left {
   width: 300px;
   display: flex;
