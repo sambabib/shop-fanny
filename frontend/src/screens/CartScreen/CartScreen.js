@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './CartScreen.css';
+
+// @components
 import CartItem from '../../components/CartItem/CartItem';
+import Modal from '../../components/Modal/Modal';
 
 // @actions
 import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 const CartScreen = () => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -15,6 +19,14 @@ const CartScreen = () => {
   const handleQtyChange = (qty, id) => {
     dispatch(addToCart(qty, id));
   };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
 
   useEffect(() => {
     dispatch(removeFromCart());
@@ -68,7 +80,8 @@ const CartScreen = () => {
         </div>
 
         <div className='cartscreen-footer__button'>
-          <button type='button'>Proceed to checkout</button>
+          <button type='button' onClick={handleOpenModal}>Proceed to checkout</button>
+          {showModal ? <Modal handleCloseModal={handleCloseModal} /> : null}
         </div>
       </div>
     </div>

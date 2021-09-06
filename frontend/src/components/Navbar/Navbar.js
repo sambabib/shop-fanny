@@ -13,7 +13,9 @@ const Navabar = ({ handleSideToggle }) => {
   return (
     <nav className='navbar'>
       <div className='navbar__logo'>
-        <h2>shop.fanny</h2>
+        <Link to='/'>
+          <h2>shop.fanny</h2>
+        </Link>
       </div>
 
       <div className='navbar__items'>
